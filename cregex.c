@@ -18,7 +18,7 @@
 #include <sys/types.h>
 #include <regex.h>
 
-char *regular(const char *regex, const char *string, char *result)
+char *cregex(const char *regex, const char *string, char *result)
 {
 	int len;
 	int tick;
