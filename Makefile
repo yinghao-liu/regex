@@ -1,4 +1,4 @@
 CFLAGS=-g
-main:main.o
+main:main.o regular.o
 clean:
-	rm -rf main main.o
+	rm -rf main *.o
