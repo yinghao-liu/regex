@@ -1,23 +1,22 @@
-# :cn:cregex 
+# :cn: cregex 
 ## NAME
 cregex - regex match in c
 
 ## SYNOPSIS
 ```c
 #include "cregex.h"
-char *cregex(const char *regex, const char *string, char *result);
+int cregex(const char *regex, const char *string, char *result);
 ```
 ## DESCRIPTION
 The **cregex()** function obtain regular expression from `regex`, strings from `string`, 
 then **cregex()** print regular expression's matches. The entire match is printed first,
-the other subexpression then printed one by one. the max match number is Ten. At last, It
-will return the last match stored in `result`.
+the other subexpression then printed one by one. the max match number is Ten. The last 
+match is stored in `result`,and return zero, or, if result is NULL, zero is also returned.
 
 ## RETURN VALUE
-On success, return a pointer to the last match string in `result`. otherwise, NULL is 
-returned and print the reason why it failed to stdout.
+On success, return 0. otherwise, -1 is returned and print the reason why it failed to stdout.
 
-# COPYRIGHT
+## COPYRIGHT
 Copyright (C) 2017 francis_hao \<francis_hao@126.com>
 
 This program is free software; you can redistribute it and/or modify 
