@@ -18,7 +18,7 @@
 #include <sys/types.h>
 #include <regex.h>
 
-char *cregex(const char *regex, const char *string, char *result)
+int cregex(const char *regex, const char *string, char *result)
 {
 	int len;
 	int tick;
@@ -40,6 +40,9 @@ char *cregex(const char *regex, const char *string, char *result)
 		goto ERROR;
 	}
 	regfree(&preg);
+	if(NULL == result){
+		return 0;
+	}
 
 	for (tick=0; tick<MAX_MATCH_NUM; tick++){
 		if (pmatch[tick].rm_so == -1){
@@ -50,15 +53,12 @@ char *cregex(const char *regex, const char *string, char *result)
 		strncpy(result, string+pmatch[tick].rm_so, len);
 		printf("%s\n",result);
 	}
-	tick-=1;
-	len=pmatch[tick].rm_eo - pmatch[tick].rm_so;
-	memset(result, 0, str_len);
-	return strncpy(result, string+pmatch[tick].rm_so, len);
+	return 0;
 
 ERROR:
 	regfree(&preg);
 	regerror(errno, &preg, (char * __restrict__)errbuff, sizeof (errbuff));	
-	printf("regular error: %s\n",errbuff);
-	return NULL;
+	printf("regular expression error: %s\n",errbuff);
+	return -1;
 
 }
