@@ -3,8 +3,8 @@
 int main(void)
 {
 	char result[20]={0};
-	if (NULL != cregex("ab(.*)", "dsdsdsbb", result)){
-		printf("%s\n", result);
+	if (NULL != cregex("ab(.*)", "absdkjsd", result)){
+		printf("here is main %s\n", result);
 	}
 	return 0;
 }
