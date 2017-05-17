@@ -13,7 +13,7 @@ then **cregex()** print regular expression's matches. The entire match is printe
 the other subexpression then printed one by one. the max match number is Ten. The last 
 match is stored in `result`,and return zero, or, if result is NULL, zero is also returned.
 
-The `result` must be large enough to receive the last match.
+The `result` must be large enough to receive all matches.
 
 ## RETURN VALUE
 On success, return 0. otherwise, -1 is returned and print the reason why it failed to stdout.
