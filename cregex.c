@@ -23,13 +23,11 @@ int cregex(const char *regex, const char *string, char *result)
 	int len;
 	int tick;
 	int errno;
-	int str_len;
 	char *errbuff[20]={0};
 
 #define MAX_MATCH_NUM 10
 	regmatch_t pmatch[MAX_MATCH_NUM];
 	regex_t preg;
-	str_len = strlen(string);
 
 	errno = regcomp(&preg, regex, REG_EXTENDED|REG_NEWLINE);/*Use POSIX Extended Regular Expression syntax*/
 	if (errno != 0){
@@ -49,9 +47,9 @@ int cregex(const char *regex, const char *string, char *result)
 			break;
 		}
 		len=pmatch[tick].rm_eo - pmatch[tick].rm_so;
-		memset(result, 0, str_len);
+		memset(result, 0, strlen(result));
 		strncpy(result, string+pmatch[tick].rm_so, len);
-		printf("%s\n",result);
+		printf("cregex: %s\n",result);
 	}
 	return 0;
 
