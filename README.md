@@ -1,4 +1,4 @@
-# :cn: cregex 
+# cregex 
 ## NAME
 cregex - regex match in c
 
